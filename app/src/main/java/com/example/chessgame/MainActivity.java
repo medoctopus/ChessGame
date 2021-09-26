@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -55,6 +56,14 @@ public class MainActivity extends AppCompatActivity {
     public void reset(View view) {
         finish();
         startActivity(getIntent());
+    }
+
+    public void playAgain(View view) {
+        GridLayout gridLayout = (GridLayout) findViewById(R.id.gridLayout);
+        for(int i=0; i<gridLayout.getChildCount(); i++) {
+            ImageView grid = (ImageView) gridLayout.getChildAt(i);
+            grid.setImageDrawable(null);
+        }
     }
 
     @Override
