@@ -2,11 +2,14 @@ package com.example.chessgame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,12 +45,27 @@ public class MainActivity extends AppCompatActivity {
                 if(gameState[winCondition[0]]==gameState[winCondition[1]] && gameState[winCondition[1]]==gameState[winCondition[2]] && gameState[winCondition[0]]!=2) {
                     String winner = "";
                     if(player==1) {
-                        winner = "White";
+                        winner = "SpongeBob";
                     } else {
-                        winner = "Black";
+                        winner = "Patrick";
                     }
                     Toast.makeText(this, winner+" wins the game!", Toast.LENGTH_LONG).show();
                     gameContinue = false;
+
+                    ImageView imageViewAll = (ImageView) findViewById(R.id.imageViewAll);
+                    imageViewAll.setVisibility(View.INVISIBLE);
+
+                    VideoView videoView = (VideoView) findViewById(R.id.videoView);
+                    videoView.setVisibility(View.VISIBLE);
+                    if(winner.equals("Patrick")) {
+                        videoView.setVideoPath("android.resource://"+getPackageName()+"/"+R.raw.video1);
+                    } else {
+                        videoView.setVideoPath("android.resource://"+getPackageName()+"/"+R.raw.video2);
+                    }
+                    MediaController mediaController = new MediaController(this);
+                    mediaController.setAnchorView(videoView);
+                    videoView.setMediaController(mediaController);
+                    videoView.start();
                 }
             }
         }
@@ -58,13 +76,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(getIntent());
     }
 
-    public void playAgain(View view) {
-        GridLayout gridLayout = (GridLayout) findViewById(R.id.gridLayout);
-        for(int i=0; i<gridLayout.getChildCount(); i++) {
-            ImageView grid = (ImageView) gridLayout.getChildAt(i);
-            grid.setImageDrawable(null);
-        }
-    }
+//    public void playAgain(View view) {
+//        GridLayout gridLayout = (GridLayout) findViewById(R.id.gridLayout);
+//        for(int i=0; i<gridLayout.getChildCount(); i++) {
+//            ImageView grid = (ImageView) gridLayout.getChildAt(i);
+//            grid.setImageDrawable(null);
+//        }
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
