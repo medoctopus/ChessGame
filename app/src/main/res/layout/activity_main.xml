@@ -147,14 +147,24 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageViewAll"
-        android:layout_width="411dp"
-        android:layout_height="270dp"
+        android:id="@+id/imageViewBob"
+        android:layout_width="204dp"
+        android:layout_height="262dp"
+        android:onClick="playVoiceBob"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-        app:srcCompat="@drawable/all" />
+        app:srcCompat="@drawable/white" />
+
+    <ImageView
+        android:id="@+id/imageViewPatrick"
+        android:layout_width="197dp"
+        android:layout_height="261dp"
+        android:onClick="playVoicePatrick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/black" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

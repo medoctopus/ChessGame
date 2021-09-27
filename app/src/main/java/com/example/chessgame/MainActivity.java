@@ -3,6 +3,8 @@ package com.example.chessgame;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.Image;
+import android.media.MediaParser;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridLayout;
@@ -52,8 +54,10 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(this, winner+" wins the game!", Toast.LENGTH_LONG).show();
                     gameContinue = false;
 
-                    ImageView imageViewAll = (ImageView) findViewById(R.id.imageViewAll);
-                    imageViewAll.setVisibility(View.INVISIBLE);
+                    ImageView imageViewBob = (ImageView) findViewById(R.id.imageViewBob);
+                    imageViewBob.setVisibility(View.INVISIBLE);
+                    ImageView imageViewPatrick = (ImageView) findViewById(R.id.imageViewPatrick);
+                    imageViewPatrick.setVisibility(View.INVISIBLE);
 
                     VideoView videoView = (VideoView) findViewById(R.id.videoView);
                     videoView.setVisibility(View.VISIBLE);
@@ -69,6 +73,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public void playVoicePatrick(View view) {
+        MediaPlayer mediaPlayerPatrick = MediaPlayer.create(this, R.raw.patrickvoice);
+        mediaPlayerPatrick.start();
+    }
+
+    public void playVoiceBob(View view) {
+        MediaPlayer mediaPlayerBob = MediaPlayer.create(this, R.raw.spongebobvoice);
+        mediaPlayerBob.start();
     }
 
     public void reset(View view) {
